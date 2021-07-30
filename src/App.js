@@ -1,11 +1,14 @@
 import './App.css';
 import Product from './components/Product';
+import Header from "./components/Header"
+import SearchBar from './components/SearchBar';
 
 
 function App() {
   return (
     <div className="App">
-      <h1 className="bg-blue-600">Fake Shop</h1>
+      <Header />
+      <SearchBar />
       <Product />
       
     </div>
