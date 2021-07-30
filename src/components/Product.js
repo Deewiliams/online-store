@@ -20,7 +20,7 @@ const Product = () => {
 
   return (
     
-    <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-8 p-8 -mt-8 lg:-mt-8 ">
+    <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-8 p-8 -mt-8 lg:-mt-8 cursor-pointer hover:shadow-2xl ">
       {product.map((products) => (
         <div className=" border-2 border-gray-300 shadow-2xl rounded-lg" key={products.id}>
           <h1 className="text-blue-600 font-bold md:text-2xl mt-5">{products.title}</h1>
