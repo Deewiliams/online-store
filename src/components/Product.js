@@ -20,16 +20,15 @@ const Product = () => {
 
   return (
     
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 p-8 ">
+    <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-8 p-8 ">
       {product.map((products) => (
-        <div className=" rounded-lg" key={products.id}>
-          <h1 className="">{products.title}</h1>
-          <div className="flex items-center ">
-          <img className="h-48 " src={products.image} alt={product.title} />
+        <div className=" border-2 border-gray-300 rounded-lg" key={products.id}>
+          <h1 className="text-blue-600 font-bold md:text-2xl mt-5">{products.title}</h1>
+          <div className="inline-block align-middle pb-10 mt-10">
+          <img className="h-48 md:h-72 lg:h-96" src={products.image} alt={product.title} />
           </div>
-          <p>Description: {products.description} </p>
-          <p>Price: K{products.price} </p>
-          <p>category: {products.category} </p>
+          <h2 className="font-bold md:text-lg lg:text-2xl">Price: K{products.price}</h2>
+          <p className="md:text-2xl lg:md:text-2xl font-bold">category: <span className="text-gray-400">{products.category}</span></p>
         </div>
       ))}
     </div>
