@@ -10,7 +10,7 @@ const ProductDetail = () => {
   async function fetchProductDetails() {
     setLoading(true);
     axios
-      .get("https://fakestoreapi.com/products/2")
+      .get("https://fakestoreapi.com/products/4")
       .then((res) => {
         console.log(res);
         setDetail(res.data);
@@ -61,17 +61,18 @@ const ProductDetail = () => {
     //     </div>
     //   )}
     // </div>
-    <div className="bg-white w-3/4 content-center shadow-lg p-4 lg:ml-60">
+    <div className="bg-white w-3/6  shadow-lg p-4 lg:ml-72">
       {loading ? (
         "loading"
       ) : (
         <div className="grid grid-flow-col p-4">
           <div className="bg-white -mr-60 lg:w-5/6 rounded-lg">
             <img
-              className="h-60 lg:h-72 inline-block align-middle object-cover md:h-full md:w-48 lg:w-60 lg:mb-50"
+              className=" h-48 md:h-72 lg:h-full inline-block align-middle object-cover  md:w-48 lg:w-72 lg:mb-50"
               src={detail.image}
               alt={detail.title}
             />
+            
           </div>
           <div className="bg-white w-96 rounded-lg text-left text-lg font-bold">
             <h1 className="text-2xl"> {detail.title}</h1>
