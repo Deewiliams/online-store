@@ -5,7 +5,7 @@ const SearchBar = () => {
     <div className="grid mt-40 p-8  ">
         
      <form className="flex flex-row items-center">
-         <div>
+         {/* <div>
         <input
         className="placeholder-gray-500 md:w3/4 h-12 -mt-10 rounded-lg border-2 border-gray-300 placeholder-opacity-600 ..."
         placeholder="Search"
@@ -13,7 +13,7 @@ const SearchBar = () => {
       </div>
       <div>
        <button className="bg-blue-500 space-x-4 hover:bg-blue-700 text-white font-bold py-3  px-4 rounded">Search </button>
-       </div>
+       </div> */}
    </form>
      
     </div>
