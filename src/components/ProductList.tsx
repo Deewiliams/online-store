@@ -1,9 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { ProductType } from "./types";
 
-const ProductList = (props) => {
+const ProductList = (props: ProductType) => {
   return (
-    <div>
+    <div
+      className="border-2 border-gray-300 shadow-2xl rounded-lg"
+      key={props.id}
+    >
       <h1 className="text-blue-600 font-bold md:text-2xl mt-5">
         {props.title}
       </h1>
@@ -24,6 +28,7 @@ const ProductList = (props) => {
   );
 };
 ProductList.propTypes = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
