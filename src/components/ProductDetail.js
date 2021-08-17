@@ -10,7 +10,7 @@ const ProductDetail = () => {
   async function fetchProductDetails() {
     setLoading(true);
     axios
-      .get("https://fakestoreapi.com/products/4")
+      .get("https://fakestoreapi.com/products/6")
       .then((res) => {
         console.log(res);
         setDetail(res.data);
@@ -35,62 +35,28 @@ const ProductDetail = () => {
   // }
 
   return (
-    // <div className="max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden md:max-w-6xl lg:h-96">
-    //   {loading ? (
-    //     "loading"
-    //   ) : (
-    //     <div className="md:flex">
-    //       <div className="md:flex-shrink-0">
-    //         <img
-    //           className="h-60 w-full object-cover md:h-full lg:h-full  md:w-48"
-    //           src={detail.image}
-    //           alt={detail.title}
-    //         />
-    //       </div>
-    //       <div className="p-8 text-center">
-    //         <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-    //           <h1> {detail.title}</h1>
-    //         </div>
-    //         <p> price: K {detail.price} </p>
-    //         <p> Category: {detail.category} </p>
-    //         <p className="mt-2 text-gray-500">
-    //         {/* Description: {detail.description} */}
-    //         </p>
-
-    //       </div>
-    //     </div>
-    //   )}
-    // </div>
-    <div className="bg-white w-3/6  shadow-lg p-4 lg:ml-72">
-      {loading ? (
-        "loading"
-      ) : (
-        <div className="grid grid-flow-col p-4">
-          <div className="bg-white -mr-60 lg:w-5/6 rounded-lg">
-            <img
-              className=" h-48 md:h-72 lg:h-full inline-block align-middle object-cover  md:w-48 lg:w-72 lg:mb-50"
-              src={detail.image}
+     <div className=" bg-white shadow-lg border-2 border-gray-300 p-8 m-4 -mt-16 flex flex-row items-center justify-evenly ">
+      {loading ? ("Loading..." ): (<>
+        <div>
+        <img
+              className=" h-48 md:h-72 lg:h-full inline-block md:w-full lg:w-72 lg:mb-50"
+               src={detail.image}
               alt={detail.title}
-            />
-            
-          </div>
-          <div className="bg-white w-96 rounded-lg text-left text-lg font-bold">
-            <h1 className="text-2xl"> {detail.title}</h1>
-            <p> price: K {detail.price} </p>
-            <p>
-              Category: <pan className="text-gray-400">{detail.category}</pan>{" "}
-            </p>
-            <p>
-              {" "}
-              Description:{" "}
-              <span className="text-gray-400 font-bold">
-                {detail.description}{" "}
-              </span>{" "}
-            </p>
-          </div>
-        </div>
-      )}
+           />
+      </div>
+      <div className="border-gray-200 border-2 w-2/5 rounded-md">
+      <div className=" text-left m-4">
+        <h1 className="border-2 border-gray-200 p-2 h-10">{detail.title}</h1>
+        <p className="p-2">K {detail.price}</p>
+        <p className="bg-gray-300 shadow-lg border-2 border-gray-200 p-2 h-10">{detail.category}</p>
+        <p>{detail.description}</p>
+      </div>
+      </div>
+      </>)}
+      
     </div>
+
+   
   );
 };
 
