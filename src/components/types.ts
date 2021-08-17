@@ -5,10 +5,16 @@ export interface ProductType {
    title: string,
    image: string,
    price: number,
-   category: string 
+   category: string,
 }
 
-export interface ProductsListType {
-    products: ProductType[],
-
+export interface ProductsDetailType {
+    id: number,
+   title: string,
+   image: string,
+   price: number,
+   category: string,
+    description: string
 } 
+
+

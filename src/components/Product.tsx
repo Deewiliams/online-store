@@ -2,10 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ProductList from "./ProductList";
+
 import { ProductType } from "./types";
 
 const Product = () => {
   const [products, setProducts] = useState<any>([]);
+
+   
 
   useEffect(() => {
     axios
@@ -28,6 +31,7 @@ const Product = () => {
           image={product.image}
           price={product.price}
           category={product.category}
+          // handleClick ={handleClick}
         />
       ))}
     </div>
