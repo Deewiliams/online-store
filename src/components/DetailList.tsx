@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {ProductsDetailType } from './types'
 
-const DetailList = (props) => {
+const DetailList = (props: ProductsDetailType) => {
   return (
     <>
       <div>
+        {/* {props.id} */}
         <img
           className=" h-48 md:h-72 lg:h-full inline-block md:w-full lg:w-72 lg:mb-50"
           src={props.image}
@@ -16,7 +18,7 @@ const DetailList = (props) => {
       lg:text-2xl m-auto shadow-md rounded-md"
       >
         <div className=" text-left m-4">
-          <h1 className="border-2 border-gray-200 p-2 h-10 -mt-2 text-sm md:text-lg lg:text-2xl">
+          <h1 className="border-2 border-gray-200 p-2 h-10 space-y-2.5 text-sm md:text-lg lg:text-2xl">
             {props.title}
           </h1>
           <p className="p-2">K {props.price}</p>
@@ -32,11 +34,12 @@ const DetailList = (props) => {
   );
 };
 DetailList.propTypes = {
+  // id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   category: PropTypes.string.isRequired,
-  descripton: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 export default DetailList;

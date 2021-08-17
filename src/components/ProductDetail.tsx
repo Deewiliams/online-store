@@ -2,16 +2,20 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DetailList from './DetailList'
+import Loading from './Loading'
+import {useParams} from "react-router-dom";
 
 
 const ProductDetail = () => {
-  const [detail, setDetail] = useState({});
+  const [detail, setDetail] = useState<any>({});
   const [loading, setLoading] = useState(false);
 
-  async function fetchProductDetails() {
-    setLoading(true);
-    axios
-      .get("https://fakestoreapi.com/products/4")
+    let {productId} = useParams<{productId: string}>();
+    
+    async function fetchProductDetails() {
+      setLoading(true);
+      axios
+      .get(`https://fakestoreapi.com/products/${productId}`)
       .then((res) => {
         console.log(res);
         setDetail(res.data);
@@ -27,13 +31,13 @@ const ProductDetail = () => {
   useEffect(() => {
     fetchProductDetails();
   }, []);
-  console.log(detail);
-  console.log(loading);
+
 
   return (
      <div className=" bg-white shadow-lg border-2 m-auto border-gray-300 p-2 -mt-16 lg:w-2/3   flex lg:flex-row items-center justify-evenly ">
-      {loading ? ("Loading..." ): (
+      {loading ? (<Loading /> ): (
         <DetailList
+        id={detail.id}
         title= {detail.title}
         image= {detail.image}
         price={detail.price}
@@ -41,6 +45,7 @@ const ProductDetail = () => {
         description= {detail.description}
         />
       )}
+      
       
     </div>
 
