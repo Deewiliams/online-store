@@ -30,7 +30,7 @@ const Product = () => {
   },[]);
 
   return (
-    <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-8 p-8 -mt-20 lg:-mt-8 cursor-pointer hover:shadow-2xl ">
+    <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 lg:-mt-8 cursor-pointer">
       {
         loading ? (<Loading />) : (
       products.map((product: ProductType) => (

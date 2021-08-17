@@ -6,7 +6,7 @@ import { ProductType } from "./types";
 const ProductList = (props: ProductType) => {
   return (
     <div
-      className="border-2 border-gray-300 text-center shadow-2xl rounded-lg"
+      className="border-2 border-gray-300 text-center  shadow-lg rounded-lg"
       key={props.id}
     >
       <h1 className="text-blue-600 font-bold md:text-lg lg:text-lg mt-5">
