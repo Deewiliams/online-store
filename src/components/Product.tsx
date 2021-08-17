@@ -2,38 +2,48 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ProductList from "./ProductList";
-
+import Loading from './Loading'
 import { ProductType } from "./types";
 
 const Product = () => {
   const [products, setProducts] = useState<any>([]);
+  const [loading,setLoading] = useState(false);
 
-   
+   async function getAllProducts() {
+     setLoading(true);
+    axios
+    .get("https://fakestoreapi.com/products")
+    .then((res) => {
+      console.log(res);
+      setProducts(res.data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.log(err);
+      setLoading(false);
+    });
+}
+
 
   useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products")
-      .then((res) => {
-        console.log(res);
-        setProducts(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    getAllProducts();
+  },[]);
 
   return (
-    <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-8 p-8 -mt-8 lg:-mt-8 cursor-pointer hover:shadow-2xl ">
-      {products.map((product: ProductType) => (
+    <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-8 p-8 -mt-20 lg:-mt-8 cursor-pointer hover:shadow-2xl ">
+      {
+        loading ? (<Loading />) : (
+      products.map((product: ProductType) => (
         <ProductList
           id={product.id}
           title={product.title}
           image={product.image}
           price={product.price}
           category={product.category}
-          // handleClick ={handleClick}
         />
-      ))}
+      ))
+        )}
+
     </div>
   );
 };
