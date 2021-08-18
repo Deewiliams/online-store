@@ -4,6 +4,7 @@ import Product from "./components/Product";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import ProductDetail from "./components/ProductDetail";
+import Sign from "./components/Sign"
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route path="/product-details/:productId" exact>
             <ProductDetail />
+          </Route>
+          <Route path="/signup" exact>
+            <Sign />
           </Route>
         </Switch>
       </Router>
