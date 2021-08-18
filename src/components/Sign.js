@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import axios from 'axios'
+import axios from "axios";
+import Input from './Input'
 
 const Sign = () => {
   const initialState = {
@@ -8,8 +9,8 @@ const Sign = () => {
     username: "",
     password: "",
     name: {
-      firstName: "",
-      lastName: "",
+      firstname: "",
+      lastname: "",
     },
     address: {
       city: "",
@@ -24,138 +25,140 @@ const Sign = () => {
     phone: "",
   };
 
+  const message = {
+    isError: false,
+    message: "",
+  };
+
   const [userData, setUserData] = useState(initialState);
+  const [errorMessage,setErrorMessage] = useState(message);
 
   function handleChange(event) {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   }
 
-  function handleClick () {
+  function handleClick() {
     console.log(userData);
-    axios.post('https://fakestoreapi.com/users', {
-        body:JSON.stringify(userData)
+    axios
+      .post("https://fakestoreapi.com/users", {
+        body: JSON.stringify(userData),
       })
       .then((response) => {
-        console.log(response);
+        setErrorMessage({
+            ...errorMessage,
+            message: "You have successfully registered"
+        });
       })
-      .catch((err)=>{
-          console.log(err);
-      })
-    }
+      .catch((err) => {
+        setErrorMessage({
+            ...errorMessage,
+            isError: true,
+            message: err.message, 
+        });
+      });
+  }
   return (
-    <div className="bg-white m-4 w-80 -mt-14 lg:m-auto shadow-lg border-4 md:w-2/3">
-      <h1 className="text-center">Sign Up</h1>
-
-      <form className="grid grid-cols md:grid-cols-2 m-2 lg:grid-cols-1 lg:m-4 space-y-4" onSubmit={handleClick}>
-        
-        <input
-          className="placeholder-gray-500 border-2  border-gray-300 rounded-lg p-2 md:w-96 placeholder-opacity-100 ..."
+    <div className="m-4 w-80 -mt-14 m-auto  rounded-lg md:w-3/4 lg:w-2/6">
+      <h1 className="text-center lg:text-2xl font-bold ">Sign Up</h1>
+      <p style={{ color: errorMessage.isError ? "error" : "green" }}>
+            {errorMessage.message}
+          </p>
+      <form
+        className="grid grid-cols  m-auto p-4 md:ml-12 lg:ml-24 space-y-4"
+        onSubmit={handleClick}
+      >
+        <Input
           placeholder="fakestore@example.com"
           type="email"
           name="email"
           value={userData.email}
           onChange={handleChange}
         />
-        <input
-          className="placeholder-gray-500 border-2  border-gray-300 rounded-lg p-2 md:w-96 placeholder-opacity-100 ..."
+        <Input
           placeholder="username"
           type="text"
           name="username"
           value={userData.username}
           onChange={handleChange}
         />
-        <input
-          className="placeholder-gray-500 border-2  border-gray-300 rounded-lg p-2 md:w-96 placeholder-opacity-100 ..."
+        <Input
           placeholder="password"
           type="password"
           name="password"
           value={userData.password}
           onChange={handleChange}
         />
-        <input
-          className="placeholder-gray-500 border-2  border-gray-300 rounded-lg p-2 md:w-96 placeholder-opacity-100 ..."
+        <Input
           placeholder=" firstname"
           type="text"
-          name="firstName"
+          name="firstname"
           value={userData.firstName}
           onChange={handleChange}
         />
-        <input
-          className="placeholder-gray-500 border-2  border-gray-300 rounded-lg p-2 md:w-96 placeholder-opacity-100 ..."
+        <Input
           placeholder="lastname"
           type="text"
-          name="lastName"
+          name="lastname"
           value={userData.lastName}
           onChange={handleChange}
         />
-        <input
-          className="placeholder-gray-500 border-2  border-gray-300 rounded-lg p-2 md:w-96 placeholder-opacity-100 ..."
+        <Input
           placeholder="city"
           type="text"
           name="city"
           value={userData.city}
           onChange={handleChange}
         />
-        <input
-          className="placeholder-gray-500 border-2  border-gray-300 rounded-lg p-2 md:w-96 placeholder-opacity-100 ..."
+        <Input
           placeholder="street"
           type="text"
           name="street"
           value={userData.street}
           onChange={handleChange}
         />
-        <input
-          className="placeholder-gray-500 border-2  border-gray-300 rounded-lg p-2 md:w-96 placeholder-opacity-100 ..."
+        <Input
           placeholder="number"
           type="number"
           name="number"
           value={userData.number}
           onChange={handleChange}
         />
-        <input
-          className="placeholder-gray-500 border-2  border-gray-300 rounded-lg p-2 md:w-96 placeholder-opacity-100 ..."
+        <Input
           placeholder="zipcode"
           type="number"
           name="zipcode"
           value={userData.zipcode}
           onChange={handleChange}
         />
-        <input
-          className="placeholder-gray-500 border-2  border-gray-300 rounded-lg p-2 md:w-96 placeholder-opacity-100 ..."
+        <Input
           placeholder="lat"
           type="text"
           name="lat"
           value={userData.lat}
           onChange={handleChange}
         />
-        <input
-          className="placeholder-gray-500 border-2  border-gray-300 rounded-lg p-2 md:w-96 placeholder-opacity-100 ..."
+        <Input
           placeholder="long"
           type="text"
           name="long"
           value={userData.long}
           onChange={handleChange}
         />
-        <input
-          className="placeholder-gray-500 border-2  border-gray-300 rounded-lg p-2 md:w-96 placeholder-opacity-100 ..."
+        <Input
           placeholder="phone"
           type="number"
           name="phone"
           value={userData.phone}
           onChange={handleChange}
         />
-        </form>
-        <button
-            className="bg-purple-500 
-                text-gray-100 text-2xl lg:-w-40 mt-4 px-32 py-2
-                 md:px-36 md:text-4xl md:-mt-20 lg:py-4 lg:w-2/3
-                lg:px-20 lg:text-3xl hover:bg-purple-600 
-                hover:text-white rounded-lg
-                "
-            onClick={handleClick}
-          >
-            Login
-          </button>
+      </form>
+      <button
+        className="bg-blue-400 placeholder-gray-500 border-2  md:ml-16 lg:ml-28 px-28 m-4 hover:bg-blue-300 hover:text-white border-gray-300 rounded-lg p-2 md:w-96 h-10 placeholder-opacity-100 ..."
+        placeholder="Submit"
+        onClick={handleClick}
+      >
+        Submit
+      </button>
     </div>
   );
 };
