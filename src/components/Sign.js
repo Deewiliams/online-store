@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import axios from 'axios'
 
 const Sign = () => {
   const initialState = {
@@ -13,7 +14,7 @@ const Sign = () => {
     address: {
       city: "",
       street: "",
-      number: 3,
+      number: "",
       zipcode: "",
       geolocation: {
         lat: "",
@@ -27,14 +28,20 @@ const Sign = () => {
 
   function handleChange(event) {
     setUserData({ ...userData, [event.target.name]: event.target.value });
-    // console.log(userData);
   }
 
   function handleClick () {
-    // setErrors(company)
     console.log(userData);
-  }
-
+    axios.post('https://fakestoreapi.com/users', {
+        body:JSON.stringify(userData)
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err)=>{
+          console.log(err);
+      })
+    }
   return (
     <div className="bg-white m-4 w-80 -mt-14 lg:m-auto shadow-lg border-4 md:w-2/3">
       <h1 className="text-center">Sign Up</h1>
