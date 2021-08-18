@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 
 const ProductDetail = () => {
   const [detail, setDetail] = useState<any>({});
+  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   let { productId } = useParams<{ productId: string }>();
@@ -22,7 +23,7 @@ const ProductDetail = () => {
       })
 
       .catch((err) => {
-        console.log(err);
+        setErrorMessage(err.message);
         setLoading(false);
       });
   }
@@ -33,19 +34,27 @@ const ProductDetail = () => {
 
   return (
     <>
-      {loading ? (
-        <Loading />
+      {errorMessage ? (
+        <h1 className="tex-md md:text-lg lg:text-2xl text-center">
+          Error: {errorMessage}
+        </h1>
       ) : (
-        <div className=" bg-white shadow-lg border-2 m-auto border-gray-300 p-2 -mt-16 lg:w-2/3 flex lg:flex-row items-center justify-evenly ">
-          <DetailList
-            id={detail.id}
-            title={detail.title}
-            image={detail.image}
-            price={detail.price}
-            category={detail.category}
-            description={detail.description}
-          />
-        </div>
+        <>
+          {loading ? (
+            <Loading />
+          ) : (
+            <div className=" bg-white shadow-lg border-2 m-auto border-gray-300 p-2 -mt-16 lg:w-2/3 flex lg:flex-row items-center justify-evenly ">
+              <DetailList
+                id={detail.id}
+                title={detail.title}
+                image={detail.image}
+                price={detail.price}
+                category={detail.category}
+                description={detail.description}
+              />
+            </div>
+          )}
+        </>
       )}
     </>
   );

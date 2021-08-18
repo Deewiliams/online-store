@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {ProductsDetailType } from './types'
+import { ProductsDetailType } from "./types";
 
 const DetailList = (props: ProductsDetailType) => {
   return (
     <>
       <div>
-        {/* {props.id} */}
         <img
           className=" h-48 md:h-72 lg:h-full inline-block md:w-full lg:w-72 lg:mb-50"
           src={props.image}
@@ -34,7 +33,7 @@ const DetailList = (props: ProductsDetailType) => {
   );
 };
 DetailList.propTypes = {
-  // id: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

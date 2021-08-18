@@ -9,6 +9,7 @@ const ProductList = (props: ProductType) => {
       className="border-2 border-gray-300 text-center  shadow-lg rounded-lg"
       key={props.id}
     >
+      {/* <h1>{props.errorMessage}</h1> */}
       <h1 className="text-blue-600 font-bold md:text-lg lg:text-lg mt-5">
         {props.title}
       </h1>
@@ -30,6 +31,7 @@ const ProductList = (props: ProductType) => {
 };
 ProductList.propTypes = {
   id: PropTypes.number.isRequired,
+  // errorMessage: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

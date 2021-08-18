@@ -14,7 +14,7 @@ export interface ProductsDetailType {
    image: string,
    price: number,
    category: string,
-    description: string
+    description: string,
 } 
 
 
