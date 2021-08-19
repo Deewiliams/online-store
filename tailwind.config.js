@@ -6,11 +6,6 @@ module.exports = {
       animation: {
         bounce200: 'bounce 1s infinite 200ms',
         bounce400: 'bounce 1s infinite 400ms',
-        opacity: {
-          '15': '0.15',
-          '35': '0.35',
-          '65': '0.65',
-         }
     },
     },
   },

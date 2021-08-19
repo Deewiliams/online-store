@@ -4,6 +4,7 @@ import axios from "axios";
 import DetailList from "./DetailList";
 import Loading from "./Loading";
 import { useParams } from "react-router-dom";
+import { truncate } from "./Product";
 
 const ProductDetail = () => {
   const [detail, setDetail] = useState<any>({});
@@ -45,7 +46,7 @@ const ProductDetail = () => {
             <div className=" bg-white shadow-lg border-2 m-auto border-gray-300 p-2 -mt-16 lg:w-2/3 flex lg:flex-row items-center justify-evenly ">
               <DetailList
                 id={detail.id}
-                title={detail.title}
+                title={truncate(detail.title)}
                 image={detail.image}
                 price={detail.price}
                 category={detail.category}

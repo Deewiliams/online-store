@@ -4,7 +4,7 @@ import Product from "./components/Product";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import ProductDetail from "./components/ProductDetail";
-import Sign from "./components/Sign"
+import SignUp from "./components/SignUp"
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
             <ProductDetail />
           </Route>
           <Route path="/signup" exact>
-            <Sign />
+            <SignUp />
           </Route>
         </Switch>
       </Router>

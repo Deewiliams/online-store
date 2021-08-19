@@ -24,6 +24,8 @@ const Product = () => {
       });
   }
 
+
+
   useEffect(() => {
     getAllProducts();
   }, []);
@@ -44,7 +46,7 @@ const Product = () => {
             products.map((product: ProductType) => (
               <ProductList
                 id={product.id}
-                title={product.title}
+                title={truncate(product.title)}
                 image={product.image}
                 price={product.price}
                 category={product.category}
@@ -56,5 +58,15 @@ const Product = () => {
     </>
   );
 };
+
+
+export function truncate(title:string): string {
+  if(typeof title !== 'string') {
+    return '';
+  }
+  return title.substring(0,20) + " ..."
+}
+
+
 
 export default Product;
