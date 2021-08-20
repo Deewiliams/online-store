@@ -6,10 +6,9 @@ import { ProductType } from "./types";
 const ProductList = (props: ProductType) => {
   return (
     <div
-      className="border-2 border-gray-300 text-center  shadow-lg rounded-lg"
+      className="border-2 border-gray-300 text-center m-4 shadow-lg rounded-lg"
       key={props.id}
     >
-      {/* <h1>{props.errorMessage}</h1> */}
       <h1 className="text-blue-600 font-bold md:text-lg lg:text-lg mt-5">
         {props.title}
       </h1>
@@ -23,7 +22,7 @@ const ProductList = (props: ProductType) => {
         </div>
       </Link>
       <h2 className="font-bold md:text-lg lg:text-lg">Price: K{props.price}</h2>
-      <p className="md:text-lg lg:text-lg font-bold">
+      <p className="md:text-lg lg:text-lg m-4 -mt-1 font-bold">
         category: <span className="text-gray-400">{props.category}</span>
       </p>
     </div>

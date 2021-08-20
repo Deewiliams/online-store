@@ -43,7 +43,7 @@ const ProductDetail = () => {
           {loading ? (
             <Loading />
           ) : (
-            <div className=" bg-white shadow-lg border-2 m-auto border-gray-300 p-2 -mt-16 lg:w-2/3 flex lg:flex-row items-center justify-evenly ">
+            <div className=" bg-white shadow-lg border-2 m-auto rounded-lg border-gray-300 p-2 -mt-16 lg:w-2/3 flex lg:flex-row items-center justify-evenly ">
               <DetailList
                 id={detail.id}
                 title={truncate(detail.title)}

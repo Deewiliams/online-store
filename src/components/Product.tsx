@@ -39,7 +39,7 @@ const Product = () => {
         </h1>
       ) : (
         // Displays all the products 
-        <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 lg:-mt-8 cursor-pointer">
+        <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 -mt-28 cursor-pointer">
           {loading ? (
             <Loading />
           ) : (

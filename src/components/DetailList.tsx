@@ -13,15 +13,15 @@ const DetailList = (props: ProductsDetailType) => {
         />
       </div>
       <div
-        className="border-gray-200 border-2 w-2/4 md:text-lg
-      lg:text-2xl m-auto shadow-md rounded-md"
+        className="border-gray-200 border-2  w-2/4 md:text-lg
+      lg:text-2xl m-6 shadow-md rounded-md"
       >
         <div className=" text-left m-4">
-          <h1 className="border-2 border-gray-200 p-2 h-10 space-y-2.5 text-sm md:text-lg lg:text-2xl">
+          <h1 className="border-2 border-gray-200 p-2 h-12 space-y-2.5 text-sm md:text-lg lg:text-2xl">
             {props.title}
           </h1>
           <p className="p-2">K {props.price}</p>
-          <p className="bg-gray-300 shadow-lg border-2 border-gray-200 p-2 h-10">
+          <p className="bg-gray-300 shadow-lg border-2 border-gray-200 p-2 h-12">
             {props.category}
           </p>
           <p className="lg:text-lg text-gray-600 font-bold mt-5 text-sm md:text-lg">
