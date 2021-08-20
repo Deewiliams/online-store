@@ -1,182 +1,180 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import Input from './Input'
-import Button from "./Button"
-import { SignUpType } from "./types";
+import Input from "./Input";
 
 const Sign = () => {
- 
-
-  const message = {
+  const [userData, setUserData] = useState({
+    email: "",
+    username: "",
+    password: "",
+    firstname: "",
+    lastname: "",
+    city: "",
+    street: "",
+    number: "",
+    zipcode: "",
+    lat: "",
+    long: "",
+    phone: "",
+  });
+  const[errorMessage,setErrorMessage] = useState( {
     isError: false,
     message: "",
-  };
-
-  const [userData, setUserData] = useState();
-  const [email,setEmail]= useState();
-  const [username,setUserName]= useState();
-  const [password,setPassword]= useState();
-  const [firstname,setFirstName]= useState();
-  const [lastname,setLastName]= useState();
-  const [city,setCity]= useState();
-  const [street,setStreet]= useState();
-  const [number,setNumber]= useState();
-  // const [zipcode,setZipCode= useState();
-  const [lat,setLat]= useState();
-  const [long,setLong]= useState();
-  const [phone,setPhone]= useState();
-  const [errorMessage,setErrorMessage] = useState(message);
+  });
 
   function handleChange(event) {
     setUserData({ ...userData, [event.target.name]: event.target.value });
-    console.log(userData);
   }
 
   function handleClick() {
     console.log(userData);
     axios
       .post("https://fakestoreapi.com/users", {
-        body: JSON.stringify( {
-          email:'John@gmail.com',
-          username:'johnd',
-          password:'m38rmF$',
-          name:{
-              firstname:'John',
-              lastname:'Doe'
+        body: JSON.stringify({
+          email: userData.email,
+          username: userData.username,
+          password: userData.password,
+          name: {
+            firstname: userData.firstname,
+            lastname: userData.lastname,
           },
-          address:{
-              city:'kilcoole',
-              street:'7835 new road',
-              number:3,
-              zipcode:'12926-3874',
-              geolocation:{
-                  lat:'-37.3159',
-                  long:'81.1496'
-              }
+          address: {
+            city: userData.city,
+            street: userData.street,
+            number: userData.number,
+            zipcode: userData.zipcode,
+            geolocation: {
+              lat: userData.lat,
+              long: userData.long,
+            },
           },
-          phone:'1-570-236-7033'
-      }),
+          phone: userData.phone,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
-      .then((userData) => {
-        // console.log(response);
-        console.log(userData);
-        
+      
+      .then((res) => {
+        setUserData(res)
         setErrorMessage({
-            ...errorMessage,
-            message: "You have successfully registered"
+          ...errorMessage,
+          message: "you have successfully registered as a company",
         });
       })
       .catch((err) => {
         setErrorMessage({
-            ...errorMessage,
-            isError: true,
-            message: err.message, 
+          ...errorMessage,
+          isError: true,
+          message: err.message,
         });
       });
   }
+
   return (
     <div className="w-80 -mt-28 m-auto  rounded-lg md:w-3/4 lg:w-2/6">
       <h1 className="text-center lg:text-2xl font-bold ">Sign Up</h1>
-      <p style={{ color: errorMessage.isError ? "error" : "green" }}>
+      <p style={{ color: errorMessage.isError ? "red" : "green" }}>
             {errorMessage.message}
           </p>
-      <form
+            <form
         className="grid grid-cols  m-auto p-4 md:ml-12 lg:ml-24 space-y-4"
-        onSubmit={handleChange}
+        onSubmit={handleClick}
       >
         <Input
           placeholder="fakestore@example.com"
           type="email"
           name="email"
-          value={email}
-          onChange={event => setEmail(event.target.value)}
+          value={userData.email}
+          onChange={handleChange}
         />
-        {email}
         <Input
           placeholder="username"
           type="text"
           name="username"
-          value={username}
-          onChange={event => setUserName(event.target.value)}
+          value={userData.username}
+          onChange={handleChange}
         />
         <Input
           placeholder="password"
           type="password"
           name="password"
-          value={password}
-          onChange={event => setPassword(event.target.value)}
+          value={userData.password}
+          onChange={handleChange}
         />
         <Input
           placeholder=" firstname"
           type="text"
           name="firstname"
-          value={firstname}
-          onChange={event => setFirstName(event.target.value)}
+          value={userData.firstname}
+          onChange={handleChange}
         />
+        {userData.firstname}
         <Input
           placeholder="lastname"
           type="text"
           name="lastname"
-          value={lastname}
-          onChange={event => setLastName(event.target.value)}
+          value={userData.lastname}
+          onChange={handleChange}
         />
         <Input
           placeholder="city"
           type="text"
           name="city"
-          value={city}
-          onChange={event => setCity(event.target.value)}
+          value={userData.city}
+          onChange={handleChange}
         />
         <Input
           placeholder="street"
           type="text"
           name="street"
-          value={street}
-          onChange={event => setStreet(event.target.value)}
+          value={userData.street}
+          onChange={handleChange}
         />
         <Input
           placeholder="number"
           type="number"
           name="number"
-          value={number}
-          onChange={event => setNumber(event.target.value)}
+          value={userData.number}
+          onChange={handleChange}
         />
-        {/* <Input
+        <Input
           placeholder="zipcode"
           type="number"
           name="zipcode"
-          value={zipcode}
-          onChange={event => setZipCode(event.target.value)}
-        /> */}
+          value={userData.zipcode}
+          onChange={handleChange}
+        />
         <Input
           placeholder="lat"
           type="text"
           name="lat"
-          value={lat}
-          onChange={event => setLat(event.target.value)}
+          value={userData.lat}
+          onChange={handleChange}
         />
         <Input
           placeholder="long"
           type="text"
           name="long"
-          value={long}
-          onChange={event => setLong(event.target.value)}
+          value={userData.long}
+          onChange={handleChange}
         />
         <Input
           placeholder="phone"
           type="number"
           name="phone"
-          value={phone}
-          onChange={event => setPhone(event.target.value)}
+          value={userData.phone}
+          onChange={handleChange}
         />
+      
       </form>
-      <Button
-        placeholder="Submit"
+      <button className="bg-blue-400 placeholder-gray-500 border-2 
+      -mt-10 md:ml-16 lg:ml-28 px-28 m-4 hover:bg-blue-300 hover:text-white 
+      border-gray-300 rounded-lg p-2 md:w-96 h-10 placeholder-opacity-100 ..." 
+        type="submit"
         onClick={handleClick}
-        Submit= "submit"
-       />
-        
+        >submit</button>
       
     </div>
   );
