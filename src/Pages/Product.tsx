@@ -4,6 +4,8 @@ import axios from "axios";
 import ProductList from "../components/ProductList";
 import Loading from "../components/Loading";
 import { ProductType } from "../utils/types";
+import { truncate } from "../utils/helpers";
+
 
 const Product = () => {
   const [products, setProducts] = useState<any>([]);
@@ -24,21 +26,19 @@ const Product = () => {
       });
   }
 
-
-
   useEffect(() => {
     getAllProducts();
   }, []);
 
   return (
     <>
-    {/* Displaying an error message when an error has occurred */}
+      {/* Displaying an error message when an error has occurred */}
       {errorMessage ? (
         <h1 className="tex-md md:text-lg lg:text-2xl text-center">
           Error: {errorMessage}
         </h1>
       ) : (
-        // Displays all the products 
+        // Displays all the products
         <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-4 cursor-pointer">
           {loading ? (
             <Loading />
@@ -58,14 +58,6 @@ const Product = () => {
     </>
   );
 };
-
-
-export function truncate(title:string): string {
-  if(typeof title !== 'string') {
-    return '';
-  }
-  return title.substring(0,20) + " ..."
-}
 
 
 

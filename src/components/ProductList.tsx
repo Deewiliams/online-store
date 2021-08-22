@@ -30,7 +30,6 @@ const ProductList = (props: ProductType) => {
 };
 ProductList.propTypes = {
   id: PropTypes.number.isRequired,
-  // errorMessage: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

@@ -4,7 +4,7 @@ import axios from "axios";
 import DetailList from "../components/DetailList";
 import Loading from "../components/Loading";
 import { useParams } from "react-router-dom";
-import { truncate } from "./Product";
+import { truncate } from "../utils/helpers";
 
 const ProductDetail = () => {
   const [detail, setDetail] = useState<any>({});

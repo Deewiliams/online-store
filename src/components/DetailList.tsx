@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ProductsDetailType } from "../utils/types";
-// import AddCart from "./AddCart";
 
 const DetailList = (props: ProductsDetailType) => {
   return (
@@ -28,8 +27,6 @@ const DetailList = (props: ProductsDetailType) => {
           <p className="lg:text-lg text-gray-600 font-bold mt-5 text-sm md:text-lg">
             {props.description}
           </p>
-         {/* <AddCart
-         cart = "Add to Cart" /> */}
         </div>
       </div>
     </>
