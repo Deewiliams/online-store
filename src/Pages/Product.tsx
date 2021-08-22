@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ProductList from "./ProductList";
-import Loading from "./Loading";
-import { ProductType } from "./types";
+import ProductList from "../components/ProductList";
+import Loading from "../components/Loading";
+import { ProductType } from "../utils/types";
+import { truncate } from "../utils/helpers";
+
 
 const Product = () => {
   const [products, setProducts] = useState<any>([]);
@@ -30,21 +32,21 @@ const Product = () => {
 
   return (
     <>
-    {/* Displaying an error message when an error has occurred */}
+      {/* Displaying an error message when an error has occurred */}
       {errorMessage ? (
         <h1 className="tex-md md:text-lg lg:text-2xl text-center">
           Error: {errorMessage}
         </h1>
       ) : (
-        // Displays all the products 
-        <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 lg:-mt-8 cursor-pointer">
+        // Displays all the products
+        <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-4 cursor-pointer">
           {loading ? (
             <Loading />
           ) : (
             products.map((product: ProductType) => (
               <ProductList
                 id={product.id}
-                title={product.title}
+                title={truncate(product.title)}
                 image={product.image}
                 price={product.price}
                 category={product.category}
@@ -56,5 +58,7 @@ const Product = () => {
     </>
   );
 };
+
+
 
 export default Product;

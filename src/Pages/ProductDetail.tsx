@@ -1,9 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import DetailList from "./DetailList";
-import Loading from "./Loading";
+import DetailList from "../components/DetailList";
+import Loading from "../components/Loading";
 import { useParams } from "react-router-dom";
+import { truncate } from "../utils/helpers";
 
 const ProductDetail = () => {
   const [detail, setDetail] = useState<any>({});
@@ -17,7 +18,6 @@ const ProductDetail = () => {
     axios
       .get(`https://fakestoreapi.com/products/${productId}`)
       .then((res) => {
-        console.log(res);
         setDetail(res.data);
         setLoading(false);
       })
@@ -43,10 +43,10 @@ const ProductDetail = () => {
           {loading ? (
             <Loading />
           ) : (
-            <div className=" bg-white shadow-lg border-2 m-auto border-gray-300 p-2 -mt-16 lg:w-2/3 flex lg:flex-row items-center justify-evenly ">
+            <div className=" bg-white shadow-lg border-2 m-auto rounded-lg border-gray-300 p-2 mt-10 lg:w-2/3 flex lg:flex-row items-center justify-evenly ">
               <DetailList
                 id={detail.id}
-                title={detail.title}
+                title={truncate(detail.title)}
                 image={detail.image}
                 price={detail.price}
                 category={detail.category}
