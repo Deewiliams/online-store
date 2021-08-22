@@ -1,9 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ProductList from "./ProductList";
-import Loading from "./Loading";
-import { ProductType } from "./types";
+import ProductList from "../components/ProductList";
+import Loading from "../components/Loading";
+import { ProductType } from "../utils/types";
 
 const Product = () => {
   const [products, setProducts] = useState<any>([]);
@@ -39,7 +39,7 @@ const Product = () => {
         </h1>
       ) : (
         // Displays all the products 
-        <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 -mt-28 cursor-pointer">
+        <div className=" grid md:grid-cols-2 lg:grid-cols-4 gap-4 cursor-pointer">
           {loading ? (
             <Loading />
           ) : (

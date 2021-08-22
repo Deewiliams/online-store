@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { ProductType } from "./types";
+import { ProductType } from "../utils/types";
 
 const ProductList = (props: ProductType) => {
   return (
@@ -15,13 +15,13 @@ const ProductList = (props: ProductType) => {
       <Link to={`/product-details/${props.id}`}>
         <div className="inline-block align-middle pb-10 mt-10">
           <img
-            className="h-48 md:h-72 lg:h-96"
+            className="h-48 -mt-8 md:h-72 lg:h-96"
             src={props.image}
             alt={props.title}
           />
         </div>
       </Link>
-      <h2 className="font-bold md:text-lg lg:text-lg">Price: K{props.price}</h2>
+      <h2 className="font-bold md:text-lg -mt-8 lg:text-lg">Price: K{props.price}</h2>
       <p className="md:text-lg lg:text-lg m-4 -mt-1 font-bold">
         category: <span className="text-gray-400">{props.category}</span>
       </p>
