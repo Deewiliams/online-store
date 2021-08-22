@@ -30,7 +30,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
     fetchProductDetails();
-  }, []);
+  }, [productId]);
 
   return (
     <>
